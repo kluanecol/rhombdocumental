@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     public function __construct()
     {
-        $this->connection = config('connections.rhomb');
+        $this->connection = 'rhomb';
     }
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -40,12 +40,5 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+
 }

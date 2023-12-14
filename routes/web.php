@@ -17,11 +17,12 @@ use App\Models\User;
 //Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/', function () {
-       // dd(\DB::connection('rhomb')->table('users')->select('id')->get());
-        dd(User::find(1));
-        Auth::loginUsingId(1);
+        $user = \DB::connection('rhomb')->table('users')->get()->first();
 
-        dd(Auth::user());
+        //Auth::login($user);
+        Auth::loginUsingId($user->id);
+
+        dd(Auth::user(), "CHECKED-IN");
         return view('welcome');
 
     });
@@ -36,3 +37,7 @@ use App\Models\User;
     })->middleware('auth.basic');
 //});
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
