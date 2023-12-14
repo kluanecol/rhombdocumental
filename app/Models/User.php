@@ -10,6 +10,13 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
+
+    public function __construct()
+    {
+        $this->connection = config('connections.rhomb');
+    }
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
