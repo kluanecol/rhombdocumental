@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
-use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,22 +20,17 @@ use App\Models\User;
         //Auth::login($user);
         Auth::loginUsingId($user->id);
 
-        dd(Auth::user(), "CHECKED-IN");
+      //  dd(Auth::user(), "CHECKED-IN");
         return view('welcome');
 
     });
 
-    Route::get('/init', function () {
 
-        Auth::loginUsingId(1);
-
-        dd(Auth::user());
-        return view('welcome');
-
-    })->middleware('auth.basic');
 //});
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('notAuthenticated');
