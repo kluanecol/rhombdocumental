@@ -62,7 +62,6 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'rhomb' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST2',  '127.0.0.1'),
@@ -77,7 +76,6 @@ return [
             'strict' => true,
             'engine' => 'InnoDB',
         ],
-
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

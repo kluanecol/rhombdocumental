@@ -26,13 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.dashboard');
     }
 
     public function init(Request $request)
     {
         Auth::loginUsingId(Crypt::decrypt($request->id));
-        return view('home');
+        return view('admin.dashboard');
     }
 
     public function notAuthenticated()
