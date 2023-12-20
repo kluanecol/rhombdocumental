@@ -15,15 +15,8 @@ use Illuminate\Support\Facades\Route;
 //Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/', function () {
-        $user = \DB::connection('rhomb')->table('users')->get()->first();
-
-        //Auth::login($user);
-        Auth::loginUsingId($user->id);
-
-      //  dd(Auth::user(), "CHECKED-IN");
         return view('welcome');
-
-    });
+    })->middleware('auth');
 
 
 //});
@@ -31,6 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');;
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('notAuthenticated');
+Route::get('/notAuthenticated', [App\Http\Controllers\HomeController::class, 'notAuthenticated'])->name('notAuthenticated');
