@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function init(Request $request)
     {
         Auth::loginUsingId(Crypt::decrypt($request->id));
-        return view('admin.dashboard');
+        return redirect()->route('home');
     }
 
     public function notAuthenticated()
