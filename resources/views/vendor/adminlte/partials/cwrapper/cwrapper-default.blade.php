@@ -19,9 +19,15 @@
     @endif
 
     {{-- Main Content --}}
+
     <div class="content">
+
         <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
-            @yield('content')
+            <div id="" class="antialiased">
+                @yield('content')
+
+
+            </div>
         </div>
     </div>
 
