@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'periodoDeFacturacion' => 'INVOICING PERIOD',
+    'creada' => 'CREATED',
+    'generada' => 'GENERATED',
+    'finalizada' => 'FINISHED',
+    'facturasDelContrato' => 'Contract invoices',
+    'gestionarFactura' => 'Manage Invoice',
+    'sinPozos' => 'No pit activity in this time period',
+    'periodoDeFacturacionMuyLargo' => 'Long billing period (Maximum 31 days)',
+    'periodoDeFacturacionMuyCorto' => 'Short billing period (Minimum 5 days)',
+    'periodoDeFacturacionRepetido' => 'Repeated Billing period (Generate a new version of the invoice)',
+    'borrarFactura' => 'Are you sure you want to delete the invoice?',
+    'PRECIO' =>'PRICE',
+    'noEsPosibleConfigurarLaFactura' => 'It is not possible to set up the invoice',
+    'elContratoNoHaSidoConfigurado' => 'The contract does not have the necessary configurations parameterized',
+    'guardarConfigurada' =>'Are you sure you want to save the invoice with the configured settings?',
+    'guardarFactura' =>'Save invoice',
+    'versionCreadaActiva' => 'There is an identical invoice, please delete it or save it to generate a new version',
+    'cargable' => '(Chargeable)',
+    'noCargable' => '(Not chargeable)',
+    'porcentajeAdministracion' => 'Administration percentage',
+    'LIQUIDACION' => 'SETTLEMENT',
+    'CONSOLIDADO' => 'CONSOLIDATED',
+    'horas' => '(Hours)',
+    'cobrosIndependientes' => 'EXTRA CHARGES',
+    'prefactura' => 'Prefecture',
+    'tituloAdvertencias' => 'VALIDATION OF THE CONFIGURATIONS (WARNINGS)',
+    'reporteBrocas' => 'BITS',
+    'terminada' => 'done',
+    'equiposYManoDeObra' => 'EQUIPMENT & LABOUR'
+];

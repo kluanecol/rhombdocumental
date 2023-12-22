@@ -1,12 +1,13 @@
 <template>
     <div>
-       <h1 style="color: #000;"> eurekas
+     <h1 style="color: #000;"> {{ $t('Multilenguaje Activado')}}. </h1>
+       <h2>
 
-       </h1>
-       <h2 class="text-danger">{{ title }}</h2>
+       </h2>
+
     </div>
 </template>
 
 <script setup>
-const title = "EXAMPLE";
+
 </script>

@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'periodoDeFacturacion' => 'PERIODO DE FACTURACIÓN',
+    'creada' => 'CREADA',
+    'generada' => 'GENERADA',
+    'finalizada' => 'FINALIZADA',
+    'facturasDelContrato' => 'Facturas del contrato',
+    'gestionarFactura' => 'Gestionar Factura',
+    'sinPozos' => 'No hay registro de pozos en este período de tiempo',
+    'periodoDeFacturacionMuyLargo' => 'período de facturación muy largo (Máximo 31 días)',
+    'periodoDeFacturacionMuyCorto' => 'período de facturación muy corto (Mínimo 5 días)',
+    'periodoDeFacturacionRepetido' => 'período de Facturación repetido (Genere una nueva versión de la factura)',
+    'borrarFactura' =>'¿Está seguro que desea borrar la factura?',
+    'PRECIO' =>'PRECIO',
+    'noEsPosibleConfigurarLaFactura' => 'No es posible configurar la factura',
+    'elContratoNoHaSidoConfigurado' => 'El contrato no tiene parametrizadas las configuraciones necesarias',
+    'guardarConfigurada' =>'¿Está seguro que quiere guardar la factura con las configuraciones parametrizadas?',
+    'guardarFactura' =>'Guardar factura',
+    'versionCreadaActiva' => 'Existe una factura idéntica sin guardar, por favor eliminela o guardela para generar una nueva versión',
+    'cargable' => '(Cargable)',
+    'noCargable' => '(No cargable)',
+    'porcentajeAdministracion' => 'Porcentaje de administración',
+    'LIQUIDACION' => 'LIQUIDACION',
+    'CONSOLIDADO' => 'CONSOLIDADO',
+    'horas' => '(Horas)',
+    'cobrosIndependientes' => 'COBROS EXTRA',
+    'prefactura' => 'Prefactura',
+    'tituloAdvertencias' => 'VALIDACIÓN DE LAS CONFIGURACIONES (ADVERTENCIAS)',
+    'reporteBrocas' => 'BROCAS',
+    'terminada' => 'terminada',
+    'equiposYManoDeObra' => 'EQUIPOS Y MANO DE OBRA'
+];
