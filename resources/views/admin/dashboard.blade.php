@@ -17,6 +17,7 @@
 
     </div>
     <example-component/>
+
 @stop
 
 @section('js')
