@@ -73,7 +73,7 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -81,7 +81,7 @@
     {{-- Body Content --}}
     @yield('body')
 
-    @vite('resources/js/app.js')
+
 
     {{-- Base Scripts --}}
     @if(!config('adminlte.enabled_laravel_mix'))

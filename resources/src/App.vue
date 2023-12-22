@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
+    <div id="">
       <!-- Contenido principal de la aplicación -->
-
+        <p>VUE APaP</p>
     </div>
   </template>
 

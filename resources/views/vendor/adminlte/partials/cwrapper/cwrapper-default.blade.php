@@ -23,11 +23,11 @@
     <div class="content">
 
         <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
-            <div id="" class="antialiased">
+            {{-- VUE + VITE PRINCIPAL COMPONENT--}}
+            <div id="app" class="antialised">
                 @yield('content')
-
-
             </div>
+
         </div>
     </div>
 
