@@ -26,7 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        //dd(User::all());
+        $data['users'] = User::all();
+        return view('admin.dashboard', $data);
     }
 
     public function init(Request $request)
