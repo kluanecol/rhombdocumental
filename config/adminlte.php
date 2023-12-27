@@ -366,8 +366,26 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ]
+        ],
+        [
+            'text' => 'Language',
+            'topnav_right' => true,
+            'icon' => 'flag-icon flag-icon-us',
+            'submenu' => [
+                [
+                    'text'=>'English',
+                    'icon' => 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"',
+                    'url'=> '#'
+                ],
+                [
+                    'text'=>'Español',
+                    'icon' => 'flag-icon flag-icon-kh',
+                    'url'=> '#'
+                ]
+            ]
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
