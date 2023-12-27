@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/init', [App\Http\Controllers\HomeController::class, 'init'])->name('home.init');
+Route::post('/init', [App\Http\Controllers\Auth\LoginController::class, 'init'])->name('home.init');

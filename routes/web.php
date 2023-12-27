@@ -16,24 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/', function(){
+    return view('admin.dashboard');
+})->middleware('auth');
+
+Route::post('/init', [App\Http\Controllers\Auth\LoginController::class, 'init'])->name('home.init')->middleware('web');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('/notAuthenticated', [App\Http\Controllers\HomeController::class, 'notAuthenticated'])->name('notAuthenticated');
-
-
-Route::group(['middleware' => ['auth']], function()
-{
-    Route::get('/', function(){
-
-        return view('admin.dashboard');
-
-    })->name('dashboard');
-
-    Route::get('/get/info/{id}', [App\Http\Controllers\HomeController::class, 'getInfo'])->name('getInfo');
-
-    Route::post('/get/info', [App\Http\Controllers\HomeController::class, 'getInfoPost'])->name('getInfoPost');
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-});
 
 

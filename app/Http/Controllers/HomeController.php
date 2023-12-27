@@ -26,40 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(User::all());
-        $data['users'] = User::all()->take(20);
-        return view('admin.dashboard', $data);
-    }
-
-    public function init(Request $request)
-    {
-        Auth::loginUsingId(Crypt::decrypt($request->id));
-
-        //dd(Auth::user());
-
-        return redirect()->route('indddex');
+        dd(Auth::user());
+        return view('admin.dashboard');
     }
 
     public function notAuthenticated()
     {
         return view('notAuthenticated');
-    }
-
-    public function getInfo($id)
-    {
-
-        $response = [
-            'user' => User::find($id)
-        ];
-        return response()->json($response);
-    }
-
-    public function getInfoPost(Request $request)
-    {
-
-        $response = [
-            'user' => User::find($request->id)
-        ];
-        return response()->json($response);
     }
 }
