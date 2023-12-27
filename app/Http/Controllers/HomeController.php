@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(Auth::user());
-        return view('admin.dashboard');
+        $data['users'] = User::all()->take(20);
+        return view('admin.dashboard', $data);
     }
 
     public function notAuthenticated()

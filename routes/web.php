@@ -20,7 +20,7 @@ Route::get('/', function(){
     return view('admin.dashboard');
 })->middleware('auth');
 
-Route::post('/init', [App\Http\Controllers\Auth\LoginController::class, 'init'])->name('home.init')->middleware('web');
+Route::post('/api/init', [App\Http\Controllers\Auth\LoginController::class, 'init'])->name('home.init')->middleware('web');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 

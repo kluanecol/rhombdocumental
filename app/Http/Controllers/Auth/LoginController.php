@@ -45,9 +45,14 @@ class LoginController extends Controller
 
     public function init(Request $request)
     {
-        Auth::login(User::find(Crypt::decrypt($request->id)),$remember = true);
-        //Auth::loginUsingId(Crypt::decrypt($request->id), true);
+        if ($request->header('Origin') == env('KD_RHOMB_URL')) {
 
-        return view('admin.dashboard');
+            Auth::loginUsingId(Crypt::decrypt($request->id), true);
+
+            return redirect()->route('home');
+
+        }else{
+            return redirect()->away('https://kluanecolombia.com');
+        }
     }
 }

@@ -20,7 +20,9 @@
             datos sensibles. Facilitando la colaboración entre equipos, este módulo se erige como una herramienta integral
             que no solo mejora la productividad, sino que también posiciona a Kluane Drilling a la vanguardia en la gestión
             documental en un entorno empresarial competitivo.</p>
-        {{--<example-component :users="{{ json_encode($users) }}" />--}}
+            @if (isset($users))
+                <example-component :users="{{ json_encode($users) }}" />
+            @endif
     </div>
 @stop
 
