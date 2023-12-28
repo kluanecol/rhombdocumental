@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Session;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
+
+
+use App\Modules\Admin\UserCountry\Models\UserCountry;
 
 class LoginController extends Controller
 {
@@ -54,5 +57,19 @@ class LoginController extends Controller
         }else{
             return redirect()->away('https://kluanecolombia.com');
         }
+    }
+
+    protected function authenticated(Request $request)
+    {
+
+        $userId = Auth()->user()->id;
+        $userCountries = UserCountry::join('countries','countries.id','=','users_by_countries.id_country')
+        ->Where('users_by_countries.id_user',$userId)
+        ->where('countries.state',1)
+        ->get();
+
+        Session::put('countries', $userCountries);
+        session()->put('locale', 'es');
+        Session::put('country', $userCountries[0]->country);
     }
 }

@@ -232,7 +232,7 @@ return [
     |
     */
 
-    'right_sidebar' => false,
+    'right_sidebar' => true,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -375,7 +375,7 @@ return [
                 [
                     'text'=>'English',
                     'icon' => 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"',
-                    'url'=> '#'
+                    'url'=> '/home'
                 ],
                 [
                     'text'=>'Español',
