@@ -52,6 +52,10 @@ class LoginController extends Controller
 
             Auth::loginUsingId(Crypt::decrypt($request->id), true);
 
+            session()->put('locale', 'es');
+
+            self::getLanguageSubmenu();
+
             return redirect()->route('home');
 
         }else{
@@ -63,6 +67,7 @@ class LoginController extends Controller
     {
 
         $userId = Auth()->user()->id;
+
         $userCountries = UserCountry::join('countries','countries.id','=','users_by_countries.id_country')
         ->Where('users_by_countries.id_user',$userId)
         ->where('countries.state',1)
@@ -71,5 +76,31 @@ class LoginController extends Controller
         Session::put('countries', $userCountries);
         session()->put('locale', 'es');
         Session::put('country', $userCountries[0]->country);
+
+
+
+
+    }
+
+    public function getLanguageSubmenu(){
+
+        $languageOptions = [
+            'text' => trans('general.lenguaje'),
+            'topnav_right' => true,
+            'icon' => 'fas fa-glasses',
+            'submenu' => [
+                [
+                    'text'=>'English',
+                    'icon' => 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"',
+                    'url'=> route('lang.swap', 'en')
+                ],
+                [
+                    'text'=>'Español',
+                    'icon' => 'flag-icon flag-icon-kh',
+                    'url'=> route('lang.swap', 'es')
+                ]
+            ]
+        ];
+        $_SESSION["language_options"] = $languageOptions;
     }
 }

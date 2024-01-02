@@ -1,4 +1,6 @@
 <?php
+session_start();
+$languages = $_SESSION['language_options'];
 
 return [
 
@@ -232,7 +234,7 @@ return [
     |
     */
 
-    'right_sidebar' => true,
+    'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -367,23 +369,8 @@ return [
                 ],
             ],
         ],
-        [
-            'text' => 'Language',
-            'topnav_right' => true,
-            'icon' => 'flag-icon flag-icon-us',
-            'submenu' => [
-                [
-                    'text'=>'English',
-                    'icon' => 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"',
-                    'url'=> '/home'
-                ],
-                [
-                    'text'=>'Español',
-                    'icon' => 'flag-icon flag-icon-kh',
-                    'url'=> '#'
-                ]
-            ]
-        ],
+        //KD LANGUAGE
+        $languages
     ],
 
 

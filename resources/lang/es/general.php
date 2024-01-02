@@ -28,5 +28,7 @@ return [
     'seleccioneEl' => 'Seleccione el',
     'seleccioneLa' => 'Seleccione la',
     'seleccionOpcional' => 'Selección opcional',
-    'seleccioneAlmenosUnFiltro' => 'Seleccione almenos un filtro'
+    'seleccioneAlmenosUnFiltro' => 'Seleccione almenos un filtro',
+    'lenguaje' => 'Lenguaje',
+    'gestionDocumental' => 'Gestión Documental'
 ];

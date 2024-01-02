@@ -28,6 +28,8 @@ return [
     'seleccioneEl' => 'Select the',
     'seleccioneLa' => 'Select the',
     'seleccionOpcional' => 'Optional selection',
-    'seleccioneAlmenosUnFiltro' => 'Select at least one filter'
+    'seleccioneAlmenosUnFiltro' => 'Select at least one filter',
+    'lenguaje' => 'Language',
+    'gestionDocumental' => 'Document Management'
 
 ];

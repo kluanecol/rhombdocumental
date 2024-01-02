@@ -7,7 +7,7 @@
 
 @section('content_header')
     <div class="card card card-navy bg-navy">
-        <h1 class="p-4">Gestión Documental</h1>
+        <h1 class="p-4">{{trans('general.gestionDocumental')}}</h1>
     </div>
 @stop
 
