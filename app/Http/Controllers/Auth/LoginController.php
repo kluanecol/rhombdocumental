@@ -10,7 +10,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
-
+use App\Http\Controllers\Admin\GeneralConfiguration;
 
 use App\Modules\Admin\UserCountry\Models\UserCountry;
 
@@ -52,9 +52,18 @@ class LoginController extends Controller
 
             Auth::loginUsingId(Crypt::decrypt($request->id), true);
 
-            session()->put('locale', 'es');
+            $userCountries = UserCountry::join('countries','countries.id','=','users_by_countries.id_country')
+            ->Where('users_by_countries.id_user',Auth()->user()->id)
+            ->where('countries.state',1)
+            ->get();
 
-            self::getLanguageSubmenu();
+            Session::put('countries', $userCountries);
+            session()->put('locale', 'es');
+            Session::put('country', $userCountries[0]->country);
+            Session::get('countries');
+
+            GeneralConfiguration::setLanguageSubmenu();
+            GeneralConfiguration::setCountrySubmenu();
 
             return redirect()->route('home');
 
@@ -68,39 +77,12 @@ class LoginController extends Controller
 
         $userId = Auth()->user()->id;
 
-        $userCountries = UserCountry::join('countries','countries.id','=','users_by_countries.id_country')
-        ->Where('users_by_countries.id_user',$userId)
-        ->where('countries.state',1)
-        ->get();
 
-        Session::put('countries', $userCountries);
-        session()->put('locale', 'es');
-        Session::put('country', $userCountries[0]->country);
 
 
 
 
     }
 
-    public function getLanguageSubmenu(){
 
-        $languageOptions = [
-            'text' => trans('general.lenguaje'),
-            'topnav_right' => true,
-            'icon' => 'fas fa-glasses',
-            'submenu' => [
-                [
-                    'text'=>'English',
-                    'icon' => 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"',
-                    'url'=> route('lang.swap', 'en')
-                ],
-                [
-                    'text'=>'Español',
-                    'icon' => 'flag-icon flag-icon-kh',
-                    'url'=> route('lang.swap', 'es')
-                ]
-            ]
-        ];
-        $_SESSION["language_options"] = $languageOptions;
-    }
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 $languages = $_SESSION['language_options'];
+$countries = $_SESSION['country_options'];
 
 return [
 
@@ -296,7 +297,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -370,7 +371,15 @@ return [
             ],
         ],
         //KD LANGUAGE
-        $languages
+        [
+            'text' => 'language',
+            'topnav_right' => true,
+            'icon' => 'fas fa-language',
+            'submenu' => $languages,
+        ],
+
+        //KD COUNTRIES
+        $countries
     ],
 
 

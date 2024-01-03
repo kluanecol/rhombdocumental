@@ -15,7 +15,7 @@ class UserCountry extends Model
 
     public function __construct()
     {
-        $this->connection = config('connections.rhomb');
+        $this->connection =  $this->connection = 'rhomb';
     }
 
     public function country()

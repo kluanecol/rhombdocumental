@@ -25,6 +25,7 @@ Route::post('/api/init', [App\Http\Controllers\Auth\LoginController::class, 'ini
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('lang/{lang}', [App\Http\Controllers\LanguageController::class, 'swap'])->name('lang.swap')->middleware('auth');
+Route::get('swapcountry/{lang}', [App\Http\Controllers\LanguageController::class, 'swapcountry'])->name('lang.swapcountry')->middleware('auth');
 
 Route::get('/notAuthenticated', [App\Http\Controllers\HomeController::class, 'notAuthenticated'])->name('notAuthenticated');
 

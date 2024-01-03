@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Carbon\Carbon;
+use App\Http\Controllers\Admin\GeneralConfiguration;
 
 /**
  * Class LocaleMiddleware.
@@ -38,6 +39,7 @@ class LocaleMiddleware
                 }
             }
         }
+
 
         return $next($request);
     }
