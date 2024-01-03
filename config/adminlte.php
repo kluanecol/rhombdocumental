@@ -314,21 +314,16 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+        //Kluane options menu
         $menu,
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        //KD LANGUAGE
+        //Kluane languages
         [
             'text' => 'language',
             'topnav_right' => true,
             'icon' => 'fas fa-language',
             'submenu' => $languages,
         ],
-
-        //KD COUNTRIES
+        //Kluane countries
         $countries
     ],
 
@@ -467,7 +462,7 @@ return [
             'fullscreen' => true,
         ],
         'options' => [
-            'loading_screen' => 1000,
+            'loading_screen' => 500,
             'auto_show_new_tab' => true,
             'use_navbar_items' => true,
         ],

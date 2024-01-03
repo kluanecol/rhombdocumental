@@ -8,6 +8,11 @@
             'uses' => 'DocumentController@index'
         ]);
 
+        Route::get('/create', [
+            'as' => 'docs.create',
+            'uses' => 'DocumentController@create'
+        ]);
+
         Route::post('/search', [
             'as' => 'contracts.search',
             'uses' => 'ContractController@search'

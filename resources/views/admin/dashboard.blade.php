@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'RHOMB FILES | Home')
+@section('title', 'RHOMB FILES | '.trans('general.home'))
 
 @section('css')
 

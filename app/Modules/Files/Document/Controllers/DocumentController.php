@@ -19,17 +19,17 @@ class DocumentController extends Controller
         }
 
     public function index(){
-
-        dd("here");
+        /*
         $data['projects'] = $this->projectRepo->getByCountry(GeneralVariables::getCurrentCountryId())->pluck('nombre_corto', 'id');
         $data['clients'] = $this->clientRepo->getByCountry(GeneralVariables::getCurrentCountryId())->pluck('nombre_cliente', 'id');
         $data['years'] = GeneralVariables::yearsArray();
-
-        return view('sections.contracts.index', $data);
+        */
+        return view('files.index');
     }
 
-    public function Search(Request $request){
-        return $this->contractRepo->dataTableContracts($request);
+    public function create(Request $request){
+
+        return view('files.create');
     }
 
     public function getContractForm(Request $request){
