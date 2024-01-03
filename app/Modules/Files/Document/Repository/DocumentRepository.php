@@ -1,36 +1,36 @@
 <?php
 
-namespace App\Modules\Invoicing\Contract\Repository;
+namespace App\Modules\Files\Document\Repository;
 
 use App\Modules\Invoicing\Collective\Configuration\GeneralVariables;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use Session;
-use App\Modules\Invoicing\Contract\models\Contract;
+use App\Modules\Files\Document\models\Document;
 
-class ContractRepository implements ContractInterface{
+class DocumentRepository implements DocumentInterface{
 
-    public function dataTableContracts($request){
+    public function dataTableDocuments($request){
 
-        $contracts=[];
+        $documents=[];
         $table=[];
 
 
-        $contracts = $this->getByProjectYearAndClient($request->id_project, $request->year, $request->id_client);
+        $documents = $this->getByProjectYearAndClient($request->id_project, $request->year, $request->id_client);
 
 
 
-        foreach ($contracts as $contract) {
+        foreach ($documents as $Document) {
 
             $table[] = [
-                'id' => $contract->consecutive,
-                'project_name' => $contract->project->nombre_corto,
-                'client_name' => $contract->client->nombre_cliente,
-                'name' => $contract->name != NULL ? $contract->name : "NO",
-                'initial_date' => $contract->initial_date,
-                'end_date' => $contract->end_date,
-                'year' => $contract->year,
-                'options' => view('sections.contracts.components.table-options', ['contract' => $contract])->render()
+                'id' => $Document->consecutive,
+                'project_name' => $Document->project->nombre_corto,
+                'client_name' => $Document->client->nombre_cliente,
+                'name' => $Document->name != NULL ? $Document->name : "NO",
+                'initial_date' => $Document->initial_date,
+                'end_date' => $Document->end_date,
+                'year' => $Document->year,
+                'options' => view('sections.Documents.components.table-options', ['Document' => $Document])->render()
             ];
 
 
@@ -40,13 +40,13 @@ class ContractRepository implements ContractInterface{
     }
 
     public function getById($id, $relations = []){
-        return Contract::with($relations)->find($id);
+        return Document::with($relations)->find($id);
     }
 
     public function getByProjectYearAndClient($idProject, $year, $idClient){
 
         $idCountry= GeneralVariables::getCurrentCountryId();
-        return Contract::when($idProject, function ($query, $idProject) {
+        return Document::when($idProject, function ($query, $idProject) {
             return $query->whereIn('fk_id_project', $idProject);
         })
         ->when($year, function ($query, $year) {
@@ -64,17 +64,17 @@ class ContractRepository implements ContractInterface{
 
         try {
             if (isset($request->id)) {
-                $contract = Contract::find($request->id);
+                $Document = Document::find($request->id);
             }else{
-                $contract = new Contract();
+                $Document = new Document();
             }
 
-           $data = $request->only($contract->getFillable());
+           $data = $request->only($Document->getFillable());
            $data['fk_id_user'] = Auth::user()->id;
            $data['fk_id_country'] = GeneralVariables::getCurrentCountryId();
            $data['consecutive'] = $this->generateCountryConsecutive(GeneralVariables::getCurrentCountryId());
 
-           if ($contract->fill($data)->save()) {
+           if ($Document->fill($data)->save()) {
                 $result = 200;
             }else{
                 $result = 400;
@@ -92,11 +92,11 @@ class ContractRepository implements ContractInterface{
 
         try {
 
-            if (isset($request->id_contract)) {
-                $contract = Contract::find($request->id_contract);
+            if (isset($request->id_Document)) {
+                $Document = Document::find($request->id_Document);
             }
 
-           if ($contract->delete()) {
+           if ($Document->delete()) {
                 $result = 200;
             }else{
                 $result = 400;
@@ -109,12 +109,12 @@ class ContractRepository implements ContractInterface{
         }
     }
 
-    public function getContractsIdByProject($idProject){
-        return Contract::where('fk_id_project', $idProject)->pluck('id');
+    public function getDocumentsIdByProject($idProject){
+        return Document::where('fk_id_project', $idProject)->pluck('id');
     }
 
     private function generateCountryConsecutive($countryId){
-        return (Contract::where('fk_id_country', $countryId)->max('consecutive') + 1);
+        return (Document::where('fk_id_country', $countryId)->max('consecutive') + 1);
     }
 
 

@@ -1,5 +1,5 @@
 <?php
-    $controller = "Files\Document\Controllers";
+    $controller = "App\Modules\Files\Document\Controllers";
 
     Route::group(['namespace' => $controller], function(){
 
@@ -29,5 +29,3 @@
         ]);
 
     });
-
-   // });

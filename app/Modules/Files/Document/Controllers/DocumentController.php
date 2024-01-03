@@ -1,42 +1,26 @@
 <?php
 
-namespace App\Modules\Invoicing\Contract\Controllers;
+namespace App\Modules\Files\Document\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Admin\Client\Repository\ClientInterface;
-use App\Modules\Admin\Project\Repository\ProjectInterface;
-use App\Modules\Invoicing\Collective\Configuration\GeneralVariables;
 use Illuminate\Http\Request;
-use App\Modules\Invoicing\Contract\Repository\ContractInterface;
-use App\Modules\Invoicing\ConfigurationSubtype\Repository\ConfigurationSubtypeInterface;
-use App\Modules\Invoicing\ContractConfiguration\Repository\ContractConfigurationInterface;
+use App\Modules\Files\Document\Repository\DocumentInterface;
 
-use Session;
 
-class ContractController extends Controller
+class DocumentController extends Controller
 {
-    private $contractRepo;
-    protected $projectRepo;
-    protected $clientRepo;
-    protected $configurationSubtypeRepo;
-    protected $contractConfigurationRepo;
+    private $documentRepo;
 
     function __construct(
-            ContractInterface $contractRepo,
-            ProjectInterface $projectRepo,
-            ClientInterface $clientRepo,
-            ConfigurationSubtypeInterface $configurationSubtypeRepo,
-            ContractConfigurationInterface $contractConfigurationRepo
+            DocumentInterface $documentRepo
         )
         {
-            $this->contractRepo = $contractRepo;
-            $this->projectRepo = $projectRepo;
-            $this->clientRepo = $clientRepo;
-            $this->configurationSubtypeRepo = $configurationSubtypeRepo;
-            $this->contractConfigurationRepo = $contractConfigurationRepo;
+            $this->documentRepo = $documentRepo;
         }
 
     public function index(){
+
+        dd("here");
         $data['projects'] = $this->projectRepo->getByCountry(GeneralVariables::getCurrentCountryId())->pluck('nombre_corto', 'id');
         $data['clients'] = $this->clientRepo->getByCountry(GeneralVariables::getCurrentCountryId())->pluck('nombre_cliente', 'id');
         $data['years'] = GeneralVariables::yearsArray();

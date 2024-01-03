@@ -194,6 +194,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //Files Service Providers
+        App\Modules\Files\Document\Providers\DocumentServiceProvider::class,
 
     ],
 
