@@ -51,6 +51,20 @@ class GeneralConfiguration
         $_SESSION["country_options"] = $countryOptions;
     }
 
+    public static function setOptionsMenu(){
+
+        $optionsMenu =
+            [
+            'text'        => 'documents',
+            'url'         => url('docs/index'),
+            'icon'        => 'far fa-fw fa-file',
+            ];
+
+
+        $_SESSION["menu_options"] = $optionsMenu;
+
+    }
+
     public static function yearsArray(){
 
         $years = [];

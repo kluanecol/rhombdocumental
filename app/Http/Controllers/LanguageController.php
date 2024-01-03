@@ -16,6 +16,8 @@ class LanguageController extends Controller
     {
         session()->put('locale', $lang);
         GeneralConfiguration::setLanguageSubmenu();
+        GeneralConfiguration::setOptionsMenu();
+
         return redirect()->route('home');
     }
 

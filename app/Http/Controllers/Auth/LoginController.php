@@ -64,6 +64,7 @@ class LoginController extends Controller
 
             GeneralConfiguration::setLanguageSubmenu();
             GeneralConfiguration::setCountrySubmenu();
+            GeneralConfiguration::setOptionsMenu();
 
             return redirect()->route('home');
 

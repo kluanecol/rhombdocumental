@@ -17,4 +17,5 @@ return [
     'warning'                       => 'Advertencia',
     'information'                   => 'Información',
     'language'                   => 'Lenguaje',
+    'documents'                   => 'Documentos',
 ];
