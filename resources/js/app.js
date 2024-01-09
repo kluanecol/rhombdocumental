@@ -14,6 +14,7 @@ import DocumentCreateFormComponent from './components/document/DocumentCreateFor
 
 const app = createApp({});
 
+
 app.component('ExampleComponent', ExampleComponent);
 
 //Collective components

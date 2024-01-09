@@ -1,17 +1,17 @@
 <template>
     <form>
         <div class="row bg-light">
-
             <div class="col-md-12 text-center text-navy p-2">
-                <blockquote class=" ">
-                    <h1>{{ $t('general.gestionNuevoDocumento') }}</h1>
+                <blockquote>
+                    <h1>{{ $t("general.gestionNuevoDocumento") }}</h1>
                 </blockquote>
-
             </div>
 
-
             <div class="col-lg-4 col-md-6 col-xs-12 form-group">
-                <label for="process">{{ $t('general.proceso') }}:</label>
+
+
+
+                <label for="process">{{ $t("general.proceso") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-xs-12 form-group">
-                <label for="process">{{ $t('general.responsableFlujo') }}:</label>
+                <label for="process">{{ $t("general.responsableFlujo") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-xs-12 form-group">
-                <label for="system">{{ $t('general.sistema') }}:</label>
+                <label for="system">{{ $t("general.sistema") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
-                <label for="process">{{ $t('general.razonNecesidad') }}:</label>
+                <label for="process">{{ $t("general.razonNecesidad") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -60,17 +60,17 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
-                <label for="process">{{ $t('general.titulo') }}:</label>
+                <label for="process">{{ $t("general.titulo") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" id="title" v-model="title">
+                    <input type="text" class="form-control" id="title" v-model="title" />
                 </div>
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
-                <label for="process">{{ $t('general.contenido') }}:</label>
+                <label for="process">{{ $t("general.contenido") }}:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -80,36 +80,40 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
-                <label for="process">{{ $t('general.archivo') }}:</label>
+                <label for="process">{{ $t("general.archivo") }}:</label>
                 <div class="input-group">
-                    <input type="file" class="form-control-file" id="archivo" @change="handleFileUpload" placeholder="holi">
+                    <input type="file" class="form-control-file" id="archivo" required @change="handleFileUpload"
+                        placeholder="holi" />
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block">{{ $t('buttons.guardar') }}</button>
+            <button type="submit" class="btn btn-success btn-block" @click="changeF()">
+                {{ $t("buttons.guardar") }}
+            </button>
         </div>
     </form>
 </template>
 
-<script>
-export default {
-    data() {
+<script >
+import { ref } from "vue";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+    name: "DocumentCreateFormComponent",
+    props: {},
+    setup() {
+        const justification = ref(0);
+
+        const changeF = () => {
+            justification.value++;
+        }
+
         return {
-            proceso: '',
-            responsable: '',
-            sistema: '',
-            razon: '',
-            titulo: '',
-            archivo: null,
+            justification,
+            changeF
         };
     },
-    methods: {
-        handleFileUpload(event) {
-            // Manejar la subida de archivos si es necesario
-            this.archivo = event.target.files[0];
-        },
-    },
-};
+});
 </script>
 
 <style scoped>
