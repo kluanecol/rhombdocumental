@@ -1,4 +1,5 @@
 <template>
+
      <info-box-link
         :link="'/docs/create'"
         :background="'bg-success'" :icon="'fas fa-file-alt'"

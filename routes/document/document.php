@@ -13,24 +13,9 @@
             'uses' => 'DocumentController@create'
         ]);
 
-        Route::post('/search', [
-            'as' => 'contracts.search',
-            'uses' => 'ContractController@search'
-        ]);
-
-        Route::get('/getContractForm', [
-            'as' => 'contracts.getContractForm',
-            'uses' => 'ContractController@getContractForm'
-        ]);
-
         Route::post('/save', [
-            'as' => 'contracts.save',
-            'uses' => 'ContractController@save'
-        ]);
-
-        Route::post('/delete', [
-            'as' => 'contracts.delete',
-            'uses' => 'ContractController@delete'
+            'as' => 'docs.save',
+            'uses' => 'DocumentController@save'
         ]);
 
     });

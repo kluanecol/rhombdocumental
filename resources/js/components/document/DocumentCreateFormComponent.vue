@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="createDocument">
         <div class="row bg-light">
             <div class="col-md-12 text-center text-navy p-2">
                 <blockquote>
@@ -21,6 +21,13 @@
                         <option value="process2">process 2</option>
                     </select>
                 </div>
+
+                <div v-if="v$.process.$error">
+                    <p class="error"> <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ $t("validation.requerido") }}
+                    </p>
+                </div>
+
             </div>
 
             <div class="col-lg-4 col-md-6 col-xs-12 form-group">
@@ -57,6 +64,8 @@
                     </div>
                     <textarea class="form-control" id="justification" v-model="justification"></textarea>
                 </div>
+                <div v-if="v$.justification.$error" class="error">{{ v$.justification.$errors[0].$message }}</div>
+
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
@@ -82,12 +91,11 @@
             <div class="col-lg-12 col-md-12 col-xs-12 form-group">
                 <label for="process">{{ $t("general.archivo") }}:</label>
                 <div class="input-group">
-                    <input type="file" class="form-control-file" id="archivo" required @change="handleFileUpload"
-                        placeholder="holi" />
+                    <input type="file" class="form-control-file" id="file" placeholder="" />
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block" @click="changeF()">
+            <button type="submit" class="btn btn-success btn-block">
                 {{ $t("buttons.guardar") }}
             </button>
         </div>
@@ -97,25 +105,72 @@
 <script >
 import { ref } from "vue";
 import { defineComponent } from "vue";
+import { useVuelidate } from '@vuelidate/core';
+import { required, email as emailValidate, numeric, minLength, maxValue } from '@vuelidate/validators';
 
 export default defineComponent({
     name: "DocumentCreateFormComponent",
     props: {},
     setup() {
-        const justification = ref(0);
 
-        const changeF = () => {
-            justification.value++;
-        }
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+        const justification = ref('');
+        const process = ref('');
+
+        const rules = {
+            justification: { required },
+            process: { required }
+        };
+
+        const v$ = useVuelidate(rules, {
+            justification,
+            process
+        });
+
+        const createDocument = async (event) => {
+
+
+            if (v$.value.$invalid) {
+                v$.value.$touch();
+                console.log("No es válido");
+                return;
+            } else {
+                try {
+                    console.log(event.target.file.value);
+                    const formData = new FormData();
+                    formData.append('justification', justification);
+                    formData.append('process', process);
+                    formData.append('file', event.target.files);
+
+                    const response = await fetch(`/docs/save`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: formData
+                    });
+                    const data = await response.json();
+                    console.log(data, "POST");
+
+                } catch (error) {
+                    console.error('Error al consultar la información adicional:', error);
+                }
+            }
+        };
+
 
         return {
             justification,
-            changeF
+            process,
+            v$,
+            createDocument
         };
     },
 });
 </script>
 
 <style scoped>
-/* Puedes agregar estilos personalizados aquí si es necesario */
+.error {
+    color: red;
+}
 </style>

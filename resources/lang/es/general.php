@@ -30,5 +30,17 @@ return [
     'seleccionOpcional' => 'Selección opcional',
     'seleccioneAlmenosUnFiltro' => 'Seleccione almenos un filtro',
     'lenguaje' => 'Lenguaje',
-    'gestionDocumental' => 'Gestión Documental'
+    'gestionDocumental' => 'Gestión Documental',
+    'crearDocumentos' => 'Crear Documentos',
+    'gestionNuevoDocumento' => 'Formulario de gestión nuevo documento',
+    'proceso' => 'Proceso',
+    'responsableFlujo' => 'Responsable del flujo',
+    'sistema' => 'Sistema',
+    'razonNecesidad' => 'Justificación de la necesidad',
+    'titulo' => 'Título',
+    'contenido' => 'Contenido',
+    'archivo' => 'Archivo',
+    'crearDocumento' => 'Crear Documento',
+    'crearDocumentoInfo' => 'Gestionar la creación de un nuevo documento',
+    'gestionDocumentos' => 'Gestión Documental',
 ];
